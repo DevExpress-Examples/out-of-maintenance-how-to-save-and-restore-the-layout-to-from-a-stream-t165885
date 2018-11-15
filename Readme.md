@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [MainWindow.xaml](./CS/HowToSaveAndRestoreLayoutFromStream/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/HowToSaveAndRestoreLayoutFromStream/MainWindow.xaml))
+* [MainWindow.xaml.cs](./CS/HowToSaveAndRestoreLayoutFromStream/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/HowToSaveAndRestoreLayoutFromStream/MainWindow.xaml))
+<!-- default file list end -->
 # How to save and restore the layout to/from a stream
 
 
