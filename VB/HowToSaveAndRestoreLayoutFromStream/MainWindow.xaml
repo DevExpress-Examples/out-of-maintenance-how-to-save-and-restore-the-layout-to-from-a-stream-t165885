@@ -22,14 +22,24 @@
         </Grid.RowDefinitions>
         <dxpg:PivotGridControl HorizontalAlignment="Left" Name="pivotGridControl1" 
                                VerticalAlignment="Top" 
-                           DataSource="{Binding Path=Data, Source={StaticResource TypedSimpleSource}}">
+                               DataSource="{Binding Path=Data, Source={StaticResource TypedSimpleSource}}"
+                               DataProcessingEngine="Optimized">
             <dxpg:PivotGridControl.Fields>
-                <dxpg:PivotGridField Name="fieldCategory" FieldName="CategoryName" 
-                                     Caption="Category" Area="RowArea" />
-                <dxpg:PivotGridField Name="fieldYear" FieldName="OrderDate" Area="ColumnArea" 
-                                     Caption="Year" GroupInterval="DateYear" />
-                <dxpg:PivotGridField Name="fieldExtendedPrice" FieldName="Extended Price" 
-                                     Area="DataArea" CellFormat="c0"/>
+                <dxpg:PivotGridField Name="fieldCategory" Caption="Category" Area="RowArea">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="CategoryName"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
+                <dxpg:PivotGridField Name="fieldYear" Area="ColumnArea" Caption="Year">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="OrderDate" GroupInterval="DateYear"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
+                <dxpg:PivotGridField Name="fieldExtendedPrice" Area="DataArea" CellFormat="c0">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="Extended Price"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
             </dxpg:PivotGridControl.Fields>
         </dxpg:PivotGridControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
