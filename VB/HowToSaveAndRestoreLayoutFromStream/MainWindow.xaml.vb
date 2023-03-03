@@ -3,16 +3,13 @@ Imports System.Windows
 Imports DevExpress.Xpf.PivotGrid
 
 Namespace HowToSaveAndRestoreLayoutFromStream
-
     Partial Public Class MainWindow
         Inherits Window
-
         ' Create a MemoryStream instance.
         Private LayoutStream As System.IO.Stream = New System.IO.MemoryStream()
         Public Sub New()
             InitializeComponent()
             Dim group As PivotGridGroup = pivotGridControlNew.Groups.Add(fieldYear, fieldMonth)
-
         End Sub
         Private Sub buttonSave_Click(ByVal sender As Object, ByVal e As RoutedEventArgs)
             ' Save the layout to a stream.
@@ -24,7 +21,6 @@ Namespace HowToSaveAndRestoreLayoutFromStream
             ' Load the layout from the stream.
             pivotGridControlNew.RestoreLayoutFromStream(LayoutStream)
         End Sub
-
         Private Sub pivotGridControlNew_LayoutUpgrade(ByVal sender As Object, ByVal e As PivotLayoutUpgradeEventArgs)
             If e.PreviousVersion = "1.0" Then
                 Dim newField = New PivotGridField() With {
