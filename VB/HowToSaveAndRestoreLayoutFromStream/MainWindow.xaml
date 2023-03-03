@@ -18,21 +18,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
+            <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <dxpg:PivotGridControl HorizontalAlignment="Left" Name="pivotGridControl1" 
-                               VerticalAlignment="Top" 
+        <dxpg:PivotGridControl Name="pivotGridControlOld" 
                                DataSource="{Binding Path=Data, Source={StaticResource TypedSimpleSource}}"
-                               DataProcessingEngine="Optimized">
+                               DataProcessingEngine="Optimized"
+                               dx:DXSerializer.LayoutVersion="1.0">
             <dxpg:PivotGridControl.Fields>
                 <dxpg:PivotGridField Name="fieldCategory" Caption="Category" Area="RowArea">
                     <dxpg:PivotGridField.DataBinding>
                         <dxpg:DataSourceColumnBinding ColumnName="CategoryName"/>
-                    </dxpg:PivotGridField.DataBinding>
-                </dxpg:PivotGridField>
-                <dxpg:PivotGridField Name="fieldYear" Area="ColumnArea" Caption="Year">
-                    <dxpg:PivotGridField.DataBinding>
-                        <dxpg:DataSourceColumnBinding ColumnName="OrderDate" GroupInterval="DateYear"/>
                     </dxpg:PivotGridField.DataBinding>
                 </dxpg:PivotGridField>
                 <dxpg:PivotGridField Name="fieldExtendedPrice" Area="DataArea" CellFormat="c0">
@@ -42,7 +38,30 @@
                 </dxpg:PivotGridField>
             </dxpg:PivotGridControl.Fields>
         </dxpg:PivotGridControl>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <dxpg:PivotGridControl Grid.Row="1" Name="pivotGridControlNew" 
+                               DataSource="{Binding Path=Data, Source={StaticResource TypedSimpleSource}}" 
+                               DataProcessingEngine="Optimized"
+                               dx:DXSerializer.LayoutVersion="2.0"
+                               dxpg:PivotSerializationOptions.AddNewGroups="True"
+                               dxpg:PivotSerializationOptions.AddNewFields="True"
+                               dxpg:PivotSerializationOptions.RemoveOldFields="False"
+                               LayoutUpgrade="pivotGridControlNew_LayoutUpgrade">
+            <dxpg:PivotGridControl.Fields>
+                <dxpg:PivotGridField Name="fieldYear" Area="ColumnArea" Caption="Year"
+                                 Group="{Binding ElementName=group}">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="OrderDate" GroupInterval="DateYear"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
+                <dxpg:PivotGridField Name="fieldMonth" Area="ColumnArea" Caption="Month"
+                                 Group="{Binding ElementName=group}">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="OrderDate" GroupInterval="DateMonth"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
+            </dxpg:PivotGridControl.Fields>
+        </dxpg:PivotGridControl>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" >
             <Button  Name="buttonSave" Content="Save" Padding="8, 4, 8, 4" 
                     Margin="4" Click="buttonSave_Click" ></Button>
             <Button Name="buttonLoad" Content="Load" Padding="8, 4, 8, 4" 
