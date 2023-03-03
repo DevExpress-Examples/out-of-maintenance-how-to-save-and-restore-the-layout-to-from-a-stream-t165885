@@ -8,8 +8,7 @@ namespace HowToSaveAndRestoreLayoutFromStream {
         System.IO.Stream LayoutStream = new System.IO.MemoryStream();
         public MainWindow() {
             InitializeComponent();
-            PivotGridGroup group = pivotGridControlNew.Groups.Add(fieldYear, fieldMonth);
-            
+            PivotGridGroup group = pivotGridControlNew.Groups.Add(fieldYear, fieldMonth);         
         }
         private void buttonSave_Click(object sender, RoutedEventArgs e) {
             // Save the layout to a stream.
@@ -21,7 +20,6 @@ namespace HowToSaveAndRestoreLayoutFromStream {
             // Load the layout from the stream.
             pivotGridControlNew.RestoreLayoutFromStream(LayoutStream);
         }
-
         private void pivotGridControlNew_LayoutUpgrade(object sender, PivotLayoutUpgradeEventArgs e) {
             if (e.PreviousVersion == "1.0") {
                 var newField = new PivotGridField() {
@@ -32,7 +30,6 @@ namespace HowToSaveAndRestoreLayoutFromStream {
                 };
                 pivotGridControlNew.Fields.Add(newField);
             };
-
         }
     }
 }
