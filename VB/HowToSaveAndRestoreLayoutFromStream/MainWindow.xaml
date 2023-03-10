@@ -47,18 +47,18 @@
                                dxpg:PivotSerializationOptions.RemoveOldFields="False"
                                LayoutUpgrade="pivotGridControlNew_LayoutUpgrade">
             <dxpg:PivotGridControl.Fields>
-                <dxpg:PivotGridField Name="fieldYear" Area="ColumnArea" Caption="Year"
+            <dxpg:PivotGridField Name="fieldYear" Area="ColumnArea" Caption="Year"
                                  Group="{Binding ElementName=group}">
-                    <dxpg:PivotGridField.DataBinding>
-                        <dxpg:DataSourceColumnBinding ColumnName="OrderDate" GroupInterval="DateYear"/>
-                    </dxpg:PivotGridField.DataBinding>
-                </dxpg:PivotGridField>
-                <dxpg:PivotGridField Name="fieldMonth" Area="ColumnArea" Caption="Month"
+                <dxpg:PivotGridField.DataBinding>
+                    <dxpg:DataSourceColumnBinding ColumnName="OrderDate" GroupInterval="DateYear"/>
+                </dxpg:PivotGridField.DataBinding>
+            </dxpg:PivotGridField>
+            <dxpg:PivotGridField Name="fieldMonth" Area="ColumnArea" Caption="Month"
                                  Group="{Binding ElementName=group}">
-                    <dxpg:PivotGridField.DataBinding>
-                        <dxpg:DataSourceColumnBinding ColumnName="OrderDate" GroupInterval="DateMonth"/>
-                    </dxpg:PivotGridField.DataBinding>
-                </dxpg:PivotGridField>
+            <dxpg:PivotGridField.DataBinding>
+                <dxpg:DataSourceColumnBinding ColumnName="OrderDate" GroupInterval="DateMonth"/>
+            </dxpg:PivotGridField.DataBinding>
+            </dxpg:PivotGridField>
             </dxpg:PivotGridControl.Fields>
         </dxpg:PivotGridControl>
         <StackPanel Grid.Row="2" Orientation="Horizontal" >
